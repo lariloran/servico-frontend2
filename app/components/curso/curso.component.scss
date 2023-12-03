@@ -25,6 +25,22 @@ header a {
   margin-right: 20px;
 }
 
+// .container {
+//   max-width: 800px;
+//   margin: 60px auto 20px; /* Adicionei um espaço maior no topo para acomodar o header fixo */
+//   padding: 20px;
+//   box-sizing: border-box;
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   justify-content: center;
+//   height: calc(100vh - 60px); /* Subtrai a altura do header */
+//   overflow-y: auto; /* Permite rolar apenas o conteúdo dentro do container */
+//   margin: -200px auto 20px; /* Ajuste a margem para adicionar um espaçamento acima da tabela */
+
+// }
+
+// //nao corta id
 .container {
   max-width: 800px;
   margin: 60px auto 20px; /* Adicionei um espaço maior no topo para acomodar o header fixo */
@@ -34,10 +50,8 @@ header a {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: calc(100vh - 60px); /* Subtrai a altura do header */
+  height: 100vh; /* Ajuste a altura para ocupar toda a altura da viewport */
   overflow-y: auto; /* Permite rolar apenas o conteúdo dentro do container */
-  margin: -200px auto 20px; /* Ajuste a margem para adicionar um espaçamento acima da tabela */
-
 }
 
 .header {
@@ -61,9 +75,10 @@ header a {
   color: #fff;
   border: none;
   border-radius: 4px;
+  margin-left: 5px;
 }
 
-.form-container,
+
 .table {
   width: 100%;
   max-width: 400px;
@@ -75,8 +90,21 @@ header a {
   margin-bottom: 20px;
 }
 
+.form-container {
+  width: 100%;
+  max-width: 400px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  margin: 0 auto; /* Adiciona margens automáticas para centralizar o elemento na horizontal */
+}
+
 .form-group {
   margin-bottom: 20px;
+  text-align: left; /* Ajusta o alinhamento do texto para a esquerda */
 }
 
 .label {

@@ -59,6 +59,7 @@ export class CursoComponent {
   }
 
   preencherCampos(curso: Curso){
+    this.toggleForm();
     this.id = curso.id!.toString();
     this.nome = curso.nome;
     this.descricao = curso.descricao;
