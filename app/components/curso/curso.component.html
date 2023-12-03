@@ -1,45 +1,53 @@
 <div class="container">
+ 
+  <div *ngIf="showForm" class="form-container">
     <form>
-      <div>
-        <label>Id</label>
-        <input type="text" disabled [(ngModel)]="id" name="id">
+      <div class="form-group">
+        <label for="id">Id</label>
+        <input type="text" disabled [(ngModel)]="id" name="id" class="form-control">
       </div>
-      
-      <div>
-        <label>Nome</label>
-        <input type="text" [(ngModel)]="nome" name="nome">
+
+      <div class="form-group">
+        <label for="nome">Nome</label>
+        <input type="text" [(ngModel)]="nome" name="nome" class="form-control">
       </div>
-      
-      <div>
-        <label>Descrição</label>
-        <input type="text" [(ngModel)]="descricao" name="descricao">
+
+      <div class="form-group">
+        <label for="descricao">Descrição</label>
+        <input type="text" [(ngModel)]="descricao" name="descricao" class="form-control">
       </div>
-      
-      <button (click)="buttonClick()"> 
-        {{ id ? 'Salvar' : 'Criar' }}  
+
+      <button (click)="buttonClick()" class="btn btn-primary">
+        {{ id ? 'Salvar' : 'Criar' }}
+      </button>
+
+      <button (click)="voltar()" class="btn btn-primary">
+        Voltar
       </button>
     </form>
-    
-    <table>
-      <thead>
-        <th> Id </th>
-        <th> Nome </th>
-        <th> Descrição </th>
-        <th> ... </th>
-      </thead>
-    
-      <tbody>
-        <tr *ngFor="let curso of cursos$ | async">
-          <td> {{ curso.id }} </td>
-          <td> {{ curso.nome }} </td>
-          <td> {{ curso.descricao }} </td>
-          <td> 
-            <span (click)="preencherCampos(curso)" > alterar </span> 
-            <span (click)="remover(curso.id!)" > remover </span> 
-          </td>
-        </tr>
-  
-      </tbody>
-    </table>
   </div>
-  
+
+  <table *ngIf="!showForm">
+    <thead>
+      <th> Id </th>
+      <th> Nome </th>
+      <th> Descrição </th>
+      <th> ... </th>
+      <div class="btn-container">
+        <button class="btn" (click)="toggleForm()">Novo</button>
+      </div>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let curso of cursos$ | async">
+        <td> {{ curso.id }} </td>
+        <td> {{ curso.nome }} </td>
+        <td> {{ curso.descricao }} </td>
+        <td> 
+          <span (click)="preencherCampos(curso)" > alterar </span> 
+          <span (click)="remover(curso.id!)" > remover </span> 
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

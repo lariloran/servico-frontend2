@@ -12,7 +12,14 @@ import { Observable } from 'rxjs';
 })
 export class CursoComponent {
   title = 'Cursos';
+  showForm: boolean = false;
 
+  toggleForm() {
+    this.showForm = !this.showForm;
+  }
+
+  voltar(){
+  }
   // curso: Curso[] = []
   cursos$ = new Observable<Curso[]>();
 

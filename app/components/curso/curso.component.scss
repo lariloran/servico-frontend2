@@ -1,87 +1,82 @@
-:host {
-    height: 100vh;
-    width: 100vw;
-    display: grid;
-    place-items: center;
-    padding: 20px;
-    overflow: auto;
-  
-    &::-webkit-scrollbar {
-      width: 0px;
-    }
-  
-    .container {
-      border-radius: 10px;
-      border-radius: 24px;
-      background: linear-gradient(145deg, #232425, #2a2b2c);
-      box-shadow:  29px 29px 43px #181819,
-                   -29px -29px 43px #363839;
-      padding: 20px;
-      width: 500px;
-      
-      form {
-        display: flex;
-        justify-content: space-between;
-  
-        div{
-          display: flex;
-          flex-direction: column;
-          margin-bottom: 10px;
-          margin-right: 5px;
-    
-          label {
-            color: #fff;
-            font-size: .6rem;
-            font-weight: 500;
-            margin-bottom: 3px;
-          }
-    
-          input {
-            border: 1px solid #ffffffbd;
-            border-radius: 3px;
-            outline: none;
-            padding: 3px;
-            font-size: .7rem;
-          }
-    
-        }
-      }
-  
-  
-      button {
-        border: 0;
-        border-radius: 4px;
-        cursor: pointer;
-        background-color: #5B9A8B;
-        padding: 5px 10px;
-        font-weight: 700;
-        width: 100%;
-        color: #272829;
-  
-        &:hover {
-          background-color: #FFF6E0;
-        }
-      }
-    }
-  
-    table {
-      margin-top: 40px;
-      width: 100%;
-      text-align: left;
-  
-      th {
-        color: #61677A;
-        font-size: .7rem;
-      }
-  
-      th, td {
-        padding: 6px 0px;
-        border-top: 1px solid ;
-      }
-  
-      span {
-        text-decoration: underline;
-        cursor: pointer;
-      }
-    }
-  }
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; /* Centraliza verticalmente na tela */
+}
+
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.btn-container {
+  flex-shrink: 0;
+  /* Isso impede que o btn-container encolha, mantendo o botão à direita */
+}
+
+.btn {
+  padding: 12px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+}
+
+.form-container,
+.table {
+  width: 100%;
+  max-width: 400px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  box-sizing: border-box;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+.table {
+  border-collapse: collapse;
+  margin-top: 20px; /* Ajuste para separar a tabela do restante do conteúdo */
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: left;
+}
+
+th {
+  background-color: #f1f0f0;
+  color: #333;
+}
