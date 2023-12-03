@@ -1,13 +1,43 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow: hidden; /* Impede o overflow na altura da página */
+}
+
+header {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed; /* Fixa o header no topo */
+  width: 100%;
+  top: 0;
+  z-index: 1000; /* Certifica-se de que o header fica acima de outros elementos */
+}
+
+header a {
+  color: #fff;
+  text-decoration: none;
+  margin-right: 20px;
+}
+
 .container {
   max-width: 800px;
-  margin: 0 auto;
+  margin: 60px auto 20px; /* Adicionei um espaço maior no topo para acomodar o header fixo */
   padding: 20px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh; /* Centraliza verticalmente na tela */
+  height: calc(100vh - 60px); /* Subtrai a altura do header */
+  overflow-y: auto; /* Permite rolar apenas o conteúdo dentro do container */
+  margin: -200px auto 20px; /* Ajuste a margem para adicionar um espaçamento acima da tabela */
+
 }
 
 .header {
@@ -20,7 +50,7 @@
 
 .btn-container {
   flex-shrink: 0;
-  /* Isso impede que o btn-container encolha, mantendo o botão à direita */
+  margin-left: 10px;
 }
 
 .btn {
@@ -41,8 +71,8 @@
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
   box-sizing: border-box;
+  margin-bottom: 20px;
 }
 
 .form-group {
@@ -65,9 +95,14 @@
   font-size: 14px;
 }
 
-.table {
+table {
+  width: 100%;
   border-collapse: collapse;
-  margin-top: 20px; /* Ajuste para separar a tabela do restante do conteúdo */
+  margin-top: 0; /* Remova a margem superior para reduzir a distância entre o header e a tabela */
+  max-height: calc(100vh - 60px); /* Subtrai apenas a altura do header */
+  overflow-y: auto; /* Permite rolar apenas a tabela */
+  margin-top: 0; /* Remova a margem superior para reduzir a distância entre o header e a tabela */
+
 }
 
 th, td {
