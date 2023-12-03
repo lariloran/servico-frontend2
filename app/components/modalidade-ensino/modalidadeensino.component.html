@@ -1,0 +1,39 @@
+<div class="container">
+    <form>
+      <div>
+        <label>Id</label>
+        <input type="text" disabled [(ngModel)]="id" name="id">
+      </div>
+      
+      <div>
+        <label>Nome</label>
+        <input type="text" [(ngModel)]="nome" name="nome">
+      </div>
+      
+      
+      <button (click)="buttonClick()"> 
+        {{ id ? 'Salvar' : 'Criar' }}  
+      </button>
+    </form>
+    
+    <table>
+      <thead>
+        <th> Id </th>
+        <th> Nome </th>
+        <th> ... </th>
+      </thead>
+    
+      <tbody>
+        <tr *ngFor="let modalidadeEnsino of modalidadesEnsino$ | async">
+          <td> {{ modalidadeEnsino.id }} </td>
+          <td> {{ modalidadeEnsino.nome }} </td>
+          <td> 
+            <span (click)="preencherCampos(modalidadeEnsino)" > alterar </span> 
+            <span (click)="remover(modalidadeEnsino.id!)" > remover </span> 
+          </td>
+        </tr>
+  
+      </tbody>
+    </table>
+  </div>
+  
