@@ -12,10 +12,10 @@ import { Router } from '@angular/router';
 })
 export class CursoComponent {
   title = 'Cursos';
-  showForm: boolean = false;
+  showForm1: boolean = false;
 
   toggleForm() {
-    this.showForm = !this.showForm;
+    this.showForm1 = !this.showForm1;
   }
 
   voltar(){
@@ -47,6 +47,8 @@ export class CursoComponent {
 
     if (this.id) {
       this.atualizar();
+      this.toggleForm();
+      this.router.navigate(['/cursos']); // Substitua '/cursos' pela rota desejada
       return;
     }
 
@@ -63,6 +65,8 @@ export class CursoComponent {
     .subscribe(_ => this.obterCursosCadastrados());
   }
 
+  
+
   preencherCampos(curso: Curso){
     this.toggleForm();
     this.id = curso.id!.toString();
@@ -71,7 +75,12 @@ export class CursoComponent {
   }
 
   remover(id: number){
+    const resposta = window.confirm('Tem certeza que deseja remover o curso de ID ' + id + ' ?');
+    if(resposta){
     this.cursoService.remover(id)
-      .subscribe(_ => this.obterCursosCadastrados());
+    .subscribe(_ => this.obterCursosCadastrados());
+    }else{
+      this.router.navigate(['/cursos']); // Substitua '/cursos' pela rota desejada
+    }
   }
 }

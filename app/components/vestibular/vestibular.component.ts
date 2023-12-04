@@ -57,6 +57,8 @@ export class VestibularComponent {
 
     if (this.id) {
       this.atualizar();
+      this.toggleForm();
+      this.router.navigate(['/vestibulares']); // Substitua '/cursos' pela rota desejada
       return;
     }
 
@@ -77,19 +79,24 @@ export class VestibularComponent {
   preencherCampos(vestibular: Vestibular){
     this.id = vestibular.id!.toString();
     this.nome = vestibular.nome;
-    this.sigla = vestibular.sigla;
-    this.dataInicio = vestibular.dataInicio;
-    this.dataFim = vestibular.dataFim;
-    this.numeroEdital = vestibular.numeroEdital;
-    this.semestre = vestibular.semestre;
-    this.ano = vestibular.ano;
-    this.dataCadastro = vestibular.dataCadastro;
-    this.ativo = vestibular.ativo;
+    // this.sigla = vestibular.sigla;
+    // this.dataInicio = vestibular.dataInicio;
+    // this.dataFim = vestibular.dataFim;
+    // this.numeroEdital = vestibular.numeroEdital;
+    // this.semestre = vestibular.semestre;
+    // this.ano = vestibular.ano;
+    // this.dataCadastro = vestibular.dataCadastro;
+    // this.ativo = vestibular.ativo;
     
   }
 
   remover(id: number){
+    const resposta = window.confirm('Tem certeza que deseja remover o Vestibular com  ID ' + id + ' ?');
+    if(resposta){
     this.vestibularService.remover(id)
-      .subscribe(_ => this.obterVestibularesCadastrados());
+    .subscribe(_ => this.obterVestibularesCadastrados());
+    }else{
+      this.router.navigate(['/vestibulares']); // Substitua '/cursos' pela rota desejada
+    }
   }
 }

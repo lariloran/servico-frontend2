@@ -12,10 +12,10 @@ import { Router } from '@angular/router';
 })
 export class FormaingressoComponent {
   title = 'Formas de Ingresso';
-  showForm: boolean = false;
+  showForm2: boolean = false;
 
   toggleForm() {
-    this.showForm = !this.showForm;
+    this.showForm2 = !this.showForm2;
   }
 
   voltar(){
@@ -47,6 +47,8 @@ export class FormaingressoComponent {
 
     if (this.id) {
       this.atualizar();
+      this.toggleForm();
+      this.router.navigate(['/formas-ingresso']); // Substitua '/cursos' pela rota desejada
       return;
     }
 
@@ -63,12 +65,18 @@ export class FormaingressoComponent {
   }
 
   preencherCampos(curso: FormaIngresso){
+    this.toggleForm();
     this.id = curso.id!.toString();
     this.nome = curso.nome;
   }
 
   remover(id: number){
+    const resposta = window.confirm('Tem certeza que deseja remover a Forma de Ingresso com  ID ' + id + ' ?');
+    if(resposta){
     this.formaIngressoService.remover(id)
-      .subscribe(_ => this.obterFormasIngressosCadastrados());
+    .subscribe(_ => this.obterFormasIngressosCadastrados());
+    }else{
+      this.router.navigate(['/formas-ingresso']); // Substitua '/cursos' pela rota desejada
+    }
   }
 }

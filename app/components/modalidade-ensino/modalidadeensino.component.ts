@@ -11,13 +11,13 @@ import { Router } from '@angular/router';
   templateUrl: './modalidadeensino.component.html',
   styleUrls: ['./modalidadeensino.component.scss']
 })
-export class ModalidadeensinoComponent {
+export class ModalidadeEnsinoComponent {
   title = 'Modalides de Ensino';
 
-  showForm: boolean = false;
+  showForm3: boolean = false;
 
   toggleForm() {
-    this.showForm = !this.showForm;
+    this.showForm3 = !this.showForm3;
   }
 
   voltar(){
@@ -32,7 +32,7 @@ export class ModalidadeensinoComponent {
   id = '';
   nome = 'eu sou uma modalidade de ensino';
 
-  constructor(private formaIngressoService: ModalidadeEnsinoService,private router: Router){
+  constructor(private ModalidadeEnsinoService: ModalidadeEnsinoService,private router: Router){
     this.obterModalidadesEnsinoCadastrados();
   }
 
@@ -40,7 +40,7 @@ export class ModalidadeensinoComponent {
     // this.formaIngressoService.obternomes()
     //   .subscribe(modalidadeEnsino => this.modalidadeEnsino = modalidadeEnsino)
 
-    this.modalidadesEnsino$ = this.formaIngressoService.obterModalidadesEnsino();
+    this.modalidadesEnsino$ = this.ModalidadeEnsinoService.obterModalidadesEnsino();
   }
 
   buttonClick(){
@@ -49,17 +49,19 @@ export class ModalidadeensinoComponent {
 
     if (this.id) {
       this.atualizar();
+      // this.toggleForm();
+      // this.router.navigate(['/modalidades-ensino']); // Substitua '/cursos' pela rota desejada
       return;
     }
 
-    this.formaIngressoService.cadastrarModalidadeEnsino({ nome: this.nome})
+    this.ModalidadeEnsinoService.cadastrarModalidadeEnsino({ nome: this.nome})
       .subscribe(_ => this.obterModalidadesEnsinoCadastrados())
       this.toggleForm();
       this.router.navigate(['/modalidades-ensino']); // Substitua '/cursos' pela rota desejada
   }
 
   atualizar(){
-    this.formaIngressoService.editarModalidadeEnsino({ 
+    this.ModalidadeEnsinoService.editarModalidadeEnsino({ 
       id: parseInt(this.id), nome: this.nome})
     .subscribe(_ => this.obterModalidadesEnsinoCadastrados());
   }
@@ -70,7 +72,12 @@ export class ModalidadeensinoComponent {
   }
 
   remover(id: number){
-    this.formaIngressoService.remover(id)
-      .subscribe(_ => this.obterModalidadesEnsinoCadastrados());
+    // const resposta = window.confirm('Tem certeza que deseja remover a Modalidade de Ensino com  ID ' + id + ' ?');
+    // if(resposta){
+    this.ModalidadeEnsinoService.remover(id)
+    .subscribe(_ => this.obterModalidadesEnsinoCadastrados());
+    // }else{
+    //   this.router.navigate(['/modalidades-ensino']); // Substitua '/cursos' pela rota desejada
+    // }
   }
 }
