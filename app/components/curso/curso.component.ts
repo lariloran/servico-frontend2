@@ -3,7 +3,7 @@ import { environment } from 'src/environments/environment';
 import { CursoService } from './curso.service';
 import { Curso } from './curso.model';
 import { Observable } from 'rxjs';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-curso',
@@ -19,6 +19,7 @@ export class CursoComponent {
   }
 
   voltar(){
+    this.router.navigate(['/']); // Substitua '/cursos' pela rota desejada
   }
   // curso: Curso[] = []
   cursos$ = new Observable<Curso[]>();
@@ -28,7 +29,7 @@ export class CursoComponent {
   nome = 'eu sou um curso';
   descricao = '';
 
-  constructor(private cursoService: CursoService){
+  constructor(private cursoService: CursoService,private router: Router){
     this.obterCursosCadastrados();
   }
 
