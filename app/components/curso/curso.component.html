@@ -52,8 +52,8 @@
         <td> {{ curso.nome }} </td>
         <td> {{ curso.descricao }} </td>
         <td> 
-          <span (click)="preencherCampos(curso)" > alterar </span> 
-          <span (click)="remover(curso.id!)" > remover </span> 
+          <span (click)="preencherCampos(curso)" id="editar" style="cursor: pointer;"> Editar </span> 
+          <span (click)="remover(curso.id!)" id="remover" style="cursor: pointer;"> Remover </span> 
         </td>
       </tr>
     </tbody>

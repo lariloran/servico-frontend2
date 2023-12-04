@@ -19,7 +19,8 @@ export class CursoComponent {
   }
 
   voltar(){
-    this.router.navigate(['/']); // Substitua '/cursos' pela rota desejada
+    this.toggleForm();
+    this.router.navigate(['/cursos']); // Substitua '/cursos' pela rota desejada
   }
   // curso: Curso[] = []
   cursos$ = new Observable<Curso[]>();
@@ -51,6 +52,9 @@ export class CursoComponent {
 
     this.cursoService.cadastrarCurso({ nome: this.nome, descricao: this.descricao })
       .subscribe(_ => this.obterCursosCadastrados())
+      this.toggleForm();
+      this.router.navigate(['/cursos']); // Substitua '/cursos' pela rota desejada
+
   }
 
   atualizar(){
