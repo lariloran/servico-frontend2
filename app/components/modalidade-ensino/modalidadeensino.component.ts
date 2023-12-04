@@ -3,6 +3,7 @@ import { environment } from 'src/environments/environment';
 import { ModalidadeEnsinoService } from './modalidade-ensino.service';
 import { ModalidadeEnsino } from './modalidade-ensino.model';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -13,6 +14,17 @@ import { Observable } from 'rxjs';
 export class ModalidadeensinoComponent {
   title = 'Modalides de Ensino';
 
+  showForm: boolean = false;
+
+  toggleForm() {
+    this.showForm = !this.showForm;
+  }
+
+  voltar(){
+    this.toggleForm();
+    this.router.navigate(['/modalidades-ensino']); // Substitua '/cursos' pela rota desejada
+  }
+
   // modalidadeEnsino: ModalidadeEnsino[] = []
   modalidadesEnsino$ = new Observable<ModalidadeEnsino[]>();
 
@@ -20,7 +32,7 @@ export class ModalidadeensinoComponent {
   id = '';
   nome = 'eu sou uma modalidade de ensino';
 
-  constructor(private formaIngressoService: ModalidadeEnsinoService){
+  constructor(private formaIngressoService: ModalidadeEnsinoService,private router: Router){
     this.obterModalidadesEnsinoCadastrados();
   }
 
@@ -42,6 +54,8 @@ export class ModalidadeensinoComponent {
 
     this.formaIngressoService.cadastrarModalidadeEnsino({ nome: this.nome})
       .subscribe(_ => this.obterModalidadesEnsinoCadastrados())
+      this.toggleForm();
+      this.router.navigate(['/modalidades-ensino']); // Substitua '/cursos' pela rota desejada
   }
 
   atualizar(){

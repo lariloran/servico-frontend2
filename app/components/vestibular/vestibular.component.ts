@@ -3,6 +3,7 @@ import { environment } from 'src/environments/environment';
 import { VestibularService } from './vestibular.service';
 import { Vestibular } from './vestibular.model';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-vestibular',
@@ -11,6 +12,17 @@ import { Observable } from 'rxjs';
 })
 export class VestibularComponent {
   title = 'Vestibulares';
+  showForm: boolean = false;
+
+  toggleForm() {
+    this.showForm = !this.showForm;
+  }
+
+  voltar(){
+    this.toggleForm();
+    this.router.navigate(['/vestibulares']); // Substitua '/cursos' pela rota desejada
+  }
+
 
   // vestibular: Vestibular[] = []
   vestibulares$ = new Observable<Vestibular[]>();
@@ -27,7 +39,7 @@ export class VestibularComponent {
     dataCadastro= '';
     ativo= false;
 
-  constructor(private vestibularService: VestibularService){
+  constructor(private vestibularService: VestibularService,private router: Router){
     this.obterVestibularesCadastrados();
   }
 
@@ -51,6 +63,8 @@ export class VestibularComponent {
     this.vestibularService.cadastrarVestibular({ nome: this.nome, sigla: this.sigla, dataInicio: 
       this.dataInicio, dataFim: this.dataFim, numeroEdital: this.numeroEdital,semestre: this.semestre,ano: this.ano,dataCadastro: this.dataCadastro,ativo: this.ativo})
       .subscribe(_ => this.obterVestibularesCadastrados())
+      this.toggleForm();
+      this.router.navigate(['/vestibulares']); // Substitua '/cursos' pela rota desejada
   }
 
   atualizar(){

@@ -1,87 +1,153 @@
-:host {
-    height: 100vh;
-    width: 100vw;
-    display: grid;
-    place-items: center;
-    padding: 20px;
-    overflow: auto;
-  
-    &::-webkit-scrollbar {
-      width: 0px;
-    }
-  
-    .container {
-      border-radius: 10px;
-      border-radius: 24px;
-      background: linear-gradient(145deg, #232425, #2a2b2c);
-      box-shadow:  29px 29px 43px #181819,
-                   -29px -29px 43px #363839;
-      padding: 20px;
-      width: 500px;
-      
-      form {
-        display: flex;
-        justify-content: space-between;
-  
-        div{
-          display: flex;
-          flex-direction: column;
-          margin-bottom: 10px;
-          margin-right: 5px;
-    
-          label {
-            color: #fff;
-            font-size: .6rem;
-            font-weight: 500;
-            margin-bottom: 3px;
-          }
-    
-          input {
-            border: 1px solid #ffffffbd;
-            border-radius: 3px;
-            outline: none;
-            padding: 3px;
-            font-size: .7rem;
-          }
-    
-        }
-      }
-  
-  
-      button {
-        border: 0;
-        border-radius: 4px;
-        cursor: pointer;
-        background-color: #5B9A8B;
-        padding: 5px 10px;
-        font-weight: 700;
-        width: 100%;
-        color: #272829;
-  
-        &:hover {
-          background-color: #FFF6E0;
-        }
-      }
-    }
-  
-    table {
-      margin-top: 40px;
-      width: 100%;
-      text-align: left;
-  
-      th {
-        color: #61677A;
-        font-size: .7rem;
-      }
-  
-      th, td {
-        padding: 6px 0px;
-        border-top: 1px solid ;
-      }
-  
-      span {
-        text-decoration: underline;
-        cursor: pointer;
-      }
-    }
-  }
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow: hidden; /* Impede o overflow na altura da página */
+}
+
+header {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed; /* Fixa o header no topo */
+  width: 100%;
+  top: 0;
+  z-index: 1000; /* Certifica-se de que o header fica acima de outros elementos */
+}
+
+header a {
+  color: #fff;
+  text-decoration: none;
+  margin-right: 20px;
+}
+
+// .container {
+//   max-width: 800px;
+//   margin: 60px auto 20px; /* Adicionei um espaço maior no topo para acomodar o header fixo */
+//   padding: 20px;
+//   box-sizing: border-box;
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   justify-content: center;
+//   height: calc(100vh - 60px); /* Subtrai a altura do header */
+//   overflow-y: auto; /* Permite rolar apenas o conteúdo dentro do container */
+//   margin: -200px auto 20px; /* Ajuste a margem para adicionar um espaçamento acima da tabela */
+
+// }
+
+// //nao corta id
+.container {
+  max-width: 800px;
+  margin: 60px auto 20px; /* Adicionei um espaço maior no topo para acomodar o header fixo */
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; /* Ajuste a altura para ocupar toda a altura da viewport */
+  overflow-y: auto; /* Permite rolar apenas o conteúdo dentro do container */
+}
+
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.btn-container {
+  flex-shrink: 0;
+  margin-left: 10px;
+}
+
+.btn {
+  padding: 12px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  margin-left: 5px;
+}
+
+
+.table {
+  width: 100%;
+  max-width: 400px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  margin-bottom: 20px;
+}
+
+.form-container {
+  width: 100%;
+  max-width: 400px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  margin: 0 auto; /* Adiciona margens automáticas para centralizar o elemento na horizontal */
+}
+
+.form-group {
+  margin-bottom: 20px;
+  text-align: left; /* Ajusta o alinhamento do texto para a esquerda */
+}
+
+.label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0; /* Remova a margem superior para reduzir a distância entre o header e a tabela */
+  max-height: calc(100vh - 60px); /* Subtrai apenas a altura do header */
+  overflow-y: auto; /* Permite rolar apenas a tabela */
+  margin-top: 0; /* Remova a margem superior para reduzir a distância entre o header e a tabela */
+
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: left;
+}
+
+th {
+  background-color: #f1f0f0;
+  color: #333;
+}
+
+#editar{
+  color: #007bff;
+}
+
+#remover{
+  color: red;
+}

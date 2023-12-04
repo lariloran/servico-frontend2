@@ -3,6 +3,7 @@ import { environment } from 'src/environments/environment';
 import { FormaIngressoService } from './forma-ingresso.service';
 import { FormaIngresso } from './forma-ingresso.model';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-formaingresso',
@@ -11,6 +12,16 @@ import { Observable } from 'rxjs';
 })
 export class FormaingressoComponent {
   title = 'Formas de Ingresso';
+  showForm: boolean = false;
+
+  toggleForm() {
+    this.showForm = !this.showForm;
+  }
+
+  voltar(){
+    this.toggleForm();
+    this.router.navigate(['/formas-ingresso']); // Substitua '/cursos' pela rota desejada
+  }
 
   // curso: FormaIngresso[] = []
   formasIngresso$ = new Observable<FormaIngresso[]>();
@@ -19,7 +30,7 @@ export class FormaingressoComponent {
   id = '';
   nome = 'eu sou uma forma ingresso';
 
-  constructor(private formaIngressoService: FormaIngressoService){
+  constructor(private formaIngressoService: FormaIngressoService,private router: Router){
     this.obterFormasIngressosCadastrados();
   }
 
@@ -41,6 +52,8 @@ export class FormaingressoComponent {
 
     this.formaIngressoService.cadastrarFormaIngresso({ nome: this.nome})
       .subscribe(_ => this.obterFormasIngressosCadastrados())
+      this.toggleForm();
+      this.router.navigate(['/formas-ingresso']); // Substitua '/cursos' pela rota desejada
   }
 
   atualizar(){
