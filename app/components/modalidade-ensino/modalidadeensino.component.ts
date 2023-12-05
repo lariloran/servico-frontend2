@@ -49,15 +49,13 @@ export class ModalidadeEnsinoComponent {
 
     if (this.id) {
       this.atualizar();
-      // this.toggleForm();
-      // this.router.navigate(['/modalidades-ensino']); // Substitua '/cursos' pela rota desejada
       return;
     }
 
     this.ModalidadeEnsinoService.cadastrarModalidadeEnsino({ nome: this.nome})
       .subscribe(_ => this.obterModalidadesEnsinoCadastrados())
       this.toggleForm();
-      this.router.navigate(['/modalidades-ensino']); // Substitua '/cursos' pela rota desejada
+      this.router.navigate(['/modalidades-ensino']); 
   }
 
   atualizar(){
@@ -72,12 +70,7 @@ export class ModalidadeEnsinoComponent {
   }
 
   remover(id: number){
-    // const resposta = window.confirm('Tem certeza que deseja remover a Modalidade de Ensino com  ID ' + id + ' ?');
-    // if(resposta){
     this.ModalidadeEnsinoService.remover(id)
     .subscribe(_ => this.obterModalidadesEnsinoCadastrados());
-    // }else{
-    //   this.router.navigate(['/modalidades-ensino']); // Substitua '/cursos' pela rota desejada
-    // }
   }
 }

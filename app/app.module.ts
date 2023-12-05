@@ -5,18 +5,19 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { FormaingressoComponent } from './components/forma-ingresso/formaingresso.component';
-import { ModalidadeensinoComponent } from './components/modalidade-ensino/modalidadeensino.component';
+import { ModalidadeEnsinoComponent } from './components/modalidade-ensino/modalidadeensino.component';
 import { VestibularComponent } from './components/vestibular/vestibular.component';
 import { CursoComponent } from './components/curso/curso.component';
 import { MainComponent } from './components/main/main.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CursoComponent,
     FormaingressoComponent,
-    ModalidadeensinoComponent,
-    VestibularComponent, MainComponent
+    ModalidadeEnsinoComponent,
+    VestibularComponent, MainComponent, LoginComponent
   ],
   imports: [
     BrowserModule,
